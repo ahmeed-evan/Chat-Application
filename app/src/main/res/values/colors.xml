@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorBlack">#151522</color>
+    <color name="colorWhite">#FCFCFC</color>
+    <color name="MidnightBlue">#191970</color>
+    <color name="Navy">#000080</color>
+    <color name="CornflowerBlue">#6495ed</color>
+    <color name="DarkSlateBlue">#483d8b</color>
+    <color name="SlateBlue">#6a5acd</color>
+    <color name="MediumSlateBlue">#7b68ee</color>
+    <color name="LightSlateBlue">#8470ff</color>
+    <color name="MediumBlue">#0000cd</color>
+    <color name="RoyalBlue">#4169e1</color>
+    <color name="Blue">#0000ff</color>
+    <color name="DodgerBlue">#1e90ff</color>
+    <color name="DeepSkyBlue">#00bfff</color>
+    <color name="SteelBlue">#4682b4</color>
+    <color name="LightSteelBlue">#b0c4de</color>
+    <color name="LightBlue">#add8e6</color>
+    <color name="PowderBlue">#b0e0e6</color>
+</resources>

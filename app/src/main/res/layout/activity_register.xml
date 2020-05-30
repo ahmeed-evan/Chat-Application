@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="0dp"
+        app:layout_constraintGuide_percent=".3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <EditText
+        android:id="@+id/userEmailEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_round_4_blue"
+        android:cursorVisible="true"
+        android:hint="Email Address"
+        android:maxLines="1"
+        android:padding="16dp"
+        android:textAppearance="@style/Rubik_Black_14"
+        android:textColorHint="@color/LightSteelBlue"
+        android:textCursorDrawable="@color/colorBlack"
+        app:layout_constraintLeft_toLeftOf="@id/leftGuideline"
+        app:layout_constraintRight_toRightOf="@id/rightGuideline"
+        app:layout_constraintTop_toTopOf="@id/topGuideline" />
+
+    <EditText
+        android:id="@+id/userPasswordEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/background_round_4_blue"
+        android:cursorVisible="true"
+        android:hint="Password"
+        android:maxLines="1"
+        android:padding="16dp"
+        android:textAppearance="@style/Rubik_Black_14"
+        android:textColorHint="@color/LightSteelBlue"
+        android:textCursorDrawable="@color/colorBlack"
+        app:layout_constraintLeft_toLeftOf="@id/leftGuideline"
+        app:layout_constraintRight_toRightOf="@id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@id/userEmailEditText" />
+
+    <TextView
+        android:id="@+id/alreadyHaveAccountTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="8dp"
+        android:text="Already Have An Account?"
+        android:textAppearance="@style/Rubik_Medium_Black_16"
+        app:layout_constraintLeft_toLeftOf="@id/leftGuideline"
+        app:layout_constraintRight_toRightOf="@id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@id/registerButton" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/registerButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardBackgroundColor="@color/SlateBlue"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="2dp"
+        app:layout_constraintLeft_toLeftOf="@id/leftGuideline"
+        app:layout_constraintRight_toRightOf="@id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@id/userPasswordEditText">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="16dp"
+            android:text="Register"
+            android:textAllCaps="true"
+            android:textAppearance="@style/Rubik_Medium_Black_14" />
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
