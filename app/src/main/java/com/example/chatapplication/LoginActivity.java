@@ -2,6 +2,7 @@ package com.example.chatapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import butterknife.OnClick;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
+    private CustomLoadingDialog customLoadingDialog;
 
     @BindView(R.id.needNewAccountTitleTextView)
     TextView needNewAccountTitleTextView;
@@ -28,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+        customLoadingDialog=new CustomLoadingDialog(this);
     }
 
     @Override
@@ -45,6 +48,13 @@ public class LoginActivity extends AppCompatActivity {
 
     @OnClick(R.id.loginButton)
     public void onLoginButtonClicked() {
+        customLoadingDialog.startLoadingDialog();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+               customLoadingDialog.stopLoadingDialog();
+            }
+        },5000);
     }
 
     @OnClick(R.id.loginWithPhoneButton)
