@@ -37,6 +37,7 @@
         android:hint="Email Address"
         android:maxLines="1"
         android:padding="16dp"
+        android:inputType="text"
         android:textAppearance="@style/Rubik_Black_14"
         android:textColorHint="@color/LightSteelBlue"
         android:textCursorDrawable="@color/colorBlack"
@@ -52,6 +53,7 @@
         android:background="@drawable/background_round_4_blue"
         android:cursorVisible="true"
         android:hint="Password"
+        android:inputType="numberPassword"
         android:maxLines="1"
         android:padding="16dp"
         android:textAppearance="@style/Rubik_Black_14"
@@ -69,7 +71,7 @@
         android:foreground="?android:attr/selectableItemBackground"
         android:padding="8dp"
         android:text="Forgot Password ?"
-        android:textAppearance="@style/Rubik_Medium_Black_16"
+        android:textAppearance="@style/Rubik_Light_Black_16"
         app:layout_constraintRight_toRightOf="@id/rightGuideline"
         app:layout_constraintTop_toBottomOf="@id/userPasswordEditText" />
 
@@ -104,7 +106,7 @@
         android:padding="8dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="Need New Account ?"
-        android:textAppearance="@style/Rubik_Medium_Black_16"
+        android:textAppearance="@style/Rubik_Light_Black_16"
         app:layout_constraintRight_toRightOf="@id/rightGuideline"
         app:layout_constraintTop_toBottomOf="@id/loginButton"
         app:layout_constraintLeft_toLeftOf="@id/leftGuideline"/>
@@ -117,7 +119,7 @@
         android:padding="8dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:text="or"
-        android:textAppearance="@style/Rubik_Medium_Black_16"
+        android:textAppearance="@style/Rubik_Light_Black_16"
         app:layout_constraintLeft_toLeftOf="@id/leftGuideline"
         app:layout_constraintRight_toRightOf="@id/rightGuideline"
         app:layout_constraintTop_toBottomOf="@id/needNewAccountTitleTextView" />

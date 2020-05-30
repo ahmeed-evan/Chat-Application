@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.firebase.auth.FirebaseUser;
 
@@ -17,6 +18,10 @@ public class LoginActivity extends AppCompatActivity {
 
     @BindView(R.id.needNewAccountTitleTextView)
     TextView needNewAccountTitleTextView;
+    @BindView(R.id.loginButton)
+    CardView loginButton;
+    @BindView(R.id.loginWithPhoneButton)
+    CardView loginWithPhoneButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +33,22 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (firebaseUser!=null){
+        if (firebaseUser != null) {
             startActivity(new Intent(LoginActivity.this, MainActivity.class));
         }
     }
 
     @OnClick(R.id.needNewAccountTitleTextView)
-    public void onNeedNewAccountTitleTextViewClicked(){
+    public void onNeedNewAccountTitleTextViewClicked() {
         startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+    }
+
+    @OnClick(R.id.loginButton)
+    public void onLoginButtonClicked() {
+    }
+
+    @OnClick(R.id.loginWithPhoneButton)
+    public void onLoginWithPhoneButtonClicked() {
+
     }
 }
