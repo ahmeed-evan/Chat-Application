@@ -2,6 +2,8 @@ package com.example.chatapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,6 +17,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,47 +42,55 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        customLoadingDialog=new CustomLoadingDialog(this);
-        firebaseAuth=FirebaseAuth.getInstance();
+        customLoadingDialog = new CustomLoadingDialog(this);
+        firebaseAuth = FirebaseAuth.getInstance();
         ButterKnife.bind(this);
     }
 
     @OnClick(R.id.alreadyHaveAccountTitleTextView)
-    public void onAlreadyHaveAccountTitleTextViewClicked(){
-        startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+    public void onAlreadyHaveAccountTitleTextViewClicked() {
+        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
     }
 
     @OnClick(R.id.registerButton)
-    public void onRegisterButtonClicked(){
+    public void onRegisterButtonClicked() {
         registerUser();
     }
 
     private void registerUser() {
-        String userEmail=userEmailEditText.getText().toString();
-        String userPassword=userPasswordEditText.getText().toString();
+        String userEmail = userEmailEditText.getText().toString();
+        String userPassword = userPasswordEditText.getText().toString();
 
-        if (TextUtils.isEmpty(userEmail)){
-            Toast.makeText(this,"Provide a Email Address to Register",Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(userEmail)) {
+            Toast.makeText(this, "Provide a Email Address to Register", Toast.LENGTH_LONG).show();
         }
         if (TextUtils.isEmpty(userPassword)) {
             Toast.makeText(this, "Provide a Password to Register", Toast.LENGTH_LONG).show();
-        }
-        else {
+        } else {
             customLoadingDialog.startLoadingDialog();
-            firebaseAuth.createUserWithEmailAndPassword(userEmail,userPassword)
+            firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
-                        startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-                        customLoadingDialog.stopLoadingDialog();
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference();
+                                        String UUID=firebaseAuth.getUid();
+                                        databaseReference.child(ConstantKey.USER).child(UUID).setValue("");
+                                    }
+                                });
+                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                customLoadingDialog.stopLoadingDialog();
 
-                    }else {
-                      Toast.makeText(RegisterActivity.this,"Error:"+ task.getException().toString(),Toast.LENGTH_LONG).show();
-                      customLoadingDialog.stopLoadingDialog();
-                    }
-                }
-            });
+                            } else {
+                                Toast.makeText(RegisterActivity.this, "Error:" + task.getException().toString(), Toast.LENGTH_LONG).show();
+                                customLoadingDialog.stopLoadingDialog();
+                            }
+                        }
+                    });
         }
     }
+
 }
