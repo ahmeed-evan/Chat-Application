@@ -81,7 +81,8 @@ public class RegisterActivity extends AppCompatActivity {
                                         databaseReference.child(ConstantKey.USER).child(UUID).setValue("");
                                     }
                                 });
-                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class).
+                                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
                                 customLoadingDialog.stopLoadingDialog();
 
                             } else {

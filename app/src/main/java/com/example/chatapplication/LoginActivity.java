@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         customLoadingDialog = new CustomLoadingDialog(this);
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser=firebaseAuth.getCurrentUser();
+        firebaseUser = firebaseAuth.getCurrentUser();
     }
 
     @Override
@@ -87,13 +87,27 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         customLoadingDialog.stopLoadingDialog();
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class).
+                                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
                     } else {
                         customLoadingDialog.stopLoadingDialog();
                         Toast.makeText(LoginActivity.this, "Error :" + task.getException().toString(), Toast.LENGTH_LONG).show();
                     }
                 }
             });
+        }
+    }
+
+    private int key;
+
+    @Override
+    public void onBackPressed() {
+        if (key == 1) {
+            key = 0;
+            finish();
+        } else {
+            Toast.makeText(getApplicationContext(), "press back Button again to exit", Toast.LENGTH_SHORT).show();
+            key++;
         }
     }
 }
