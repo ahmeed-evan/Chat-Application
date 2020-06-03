@@ -94,7 +94,7 @@
             android:padding="16dp"
             android:text="Login"
             android:textAllCaps="true"
-            android:textAppearance="@style/Rubik_Medium_Black_14" />
+            android:textAppearance="@style/Rubik_Medium_White_14" />
 
     </androidx.cardview.widget.CardView>
 
@@ -143,7 +143,7 @@
             android:padding="16dp"
             android:textAllCaps="true"
             android:text="Login With Phone Number"
-            android:textAppearance="@style/Rubik_Medium_Black_14" />
+            android:textAppearance="@style/Rubik_Medium_White_14" />
 
     </androidx.cardview.widget.CardView>
 

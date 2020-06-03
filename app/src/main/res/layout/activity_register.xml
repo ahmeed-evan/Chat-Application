@@ -95,7 +95,7 @@
             android:padding="16dp"
             android:text="Register"
             android:textAllCaps="true"
-            android:textAppearance="@style/Rubik_Medium_Black_14" />
+            android:textAppearance="@style/Rubik_Medium_White_14" />
 
     </androidx.cardview.widget.CardView>
 

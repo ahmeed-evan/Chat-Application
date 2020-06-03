@@ -14,6 +14,11 @@ import android.widget.Toast;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +26,8 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
+    private CustomLoadingDialog customLoadingDialog;
 
     @BindView(R.id.optionTab)
     TabLayout optionTab;
@@ -35,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+        customLoadingDialog=new CustomLoadingDialog(this);
         optionTabImplementation();
     }
 
@@ -43,8 +52,31 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         if (firebaseUser == null) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }else{
+            userNameSpecified();
         }
-        return;
+    }
+
+    private void userNameSpecified() {
+        customLoadingDialog.startLoadingDialog();
+        String UUID=firebaseUser.getUid();
+        databaseReference.child(ConstantKey.USER).child(UUID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!dataSnapshot.child(ConstantKey.USER_NAME).exists()) {
+                    startActivity(new Intent(MainActivity.this,EditProfileActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|
+                            Intent.FLAG_ACTIVITY_NEW_TASK));
+                    customLoadingDialog.stopLoadingDialog();
+                }else {
+                    customLoadingDialog.stopLoadingDialog();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(MainActivity.this,"ERROR: "+databaseError.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void optionTabImplementation() {
@@ -74,43 +106,32 @@ public class MainActivity extends AppCompatActivity {
             case R.id.findFriend:
 
             case R.id.settings:
-
+                startActivity(new Intent(MainActivity.this,SettingActivity.class));
             default:
                 return true;
         }
     }
 
-//    private boolean doubleBackToExitPressedOnce = false;
-//
-//    @Override
-//    public void onBackPressed() {
-//        if (doubleBackToExitPressedOnce) {
-//            super.onBackPressed();
-//            return;
-//        }
-//
-//        this.doubleBackToExitPressedOnce = true;
-//        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-//
-//
-//        new Handler().postDelayed(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                doubleBackToExitPressedOnce=false;
-//            }
-//        }, 2000);
-
-    private int key;
+    private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     public void onBackPressed() {
-        if (key == 1) {
-            key = 0;
-            finish();
-        } else {
-            Toast.makeText(getApplicationContext(), "press back Button again to exit", Toast.LENGTH_SHORT).show();
-            key++;
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
         }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+
     }
 }
