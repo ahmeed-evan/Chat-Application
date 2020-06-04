@@ -103,15 +103,18 @@ public class MainActivity extends AppCompatActivity {
                 firebaseAuth.signOut();
                 startActivity(new Intent(MainActivity.this, LoginActivity.class).
                         addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK));
-
-            case R.id.createGroup:
-                new CustomCreateGroupDialog(MainActivity.this).startCreatingGroupDialog();
+                return true;
 
             case R.id.settings:
                 startActivity(new Intent(MainActivity.this,SettingActivity.class));
+                return true;
+
+            case R.id.createGroup:
+                new CustomCreateGroupDialog(this).startCreatingGroupDialog();
+                return true;
 
             default:
-                return true;
+                return super.onOptionsItemSelected(item);
         }
     }
 
