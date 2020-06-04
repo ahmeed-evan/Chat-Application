@@ -66,7 +66,6 @@ public class SettingActivity extends AppCompatActivity {
                     String userStatus = dataSnapshot.child(ConstantKey.USER_STATUS).getValue().toString();
                     profileNameTextView.setText(userName);
                     aboutTextView.setText(userStatus);
-                } else {
                 }
             }
 

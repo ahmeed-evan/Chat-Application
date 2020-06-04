@@ -4,7 +4,10 @@
 
     <item android:id="@+id/findFriend"
         android:title="Find Friends"
-        android:icon="@drawable/background_round_16_blue"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/createGroup"
+        android:title="Create Group"
         app:showAsAction="never" />
     <item android:id="@+id/settings"
         android:title="Setting"

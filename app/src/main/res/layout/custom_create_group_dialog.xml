@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_round_16_blue"
+    android:padding="50dp">
+
+    <EditText
+        android:id="@+id/createGroupEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/background_round_4_white"
+        android:gravity="center"
+        android:hint="Create Group"
+        android:inputType="text"
+        android:maxLength="20"
+        android:maxLines="1"
+        android:padding="16dp"
+        android:textAppearance="@style/Rubik_light_Black_14"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/createGroupButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:alpha=".7"
+        app:cardBackgroundColor="@color/SteelBlue"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="@id/createGroupEditText"
+        app:layout_constraintTop_toBottomOf="@id/createGroupEditText"
+        app:layout_constraintWidth_percent=".5">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:padding="16dp"
+            android:text="Create"
+            android:textAllCaps="true"
+            android:textAppearance="@style/Rubik_Black_14" />
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
