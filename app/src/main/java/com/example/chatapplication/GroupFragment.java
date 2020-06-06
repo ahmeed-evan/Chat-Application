@@ -1,5 +1,6 @@
 package com.example.chatapplication;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.chatapplication.Interfaces.OnRecyclerViewItemClickListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +30,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class GroupFragment extends Fragment {
+public class GroupFragment extends Fragment  implements OnRecyclerViewItemClickListener {
 
     private DatabaseReference databaseReference;
     private GroupNameAdapter groupNameAdapter;
@@ -47,7 +49,7 @@ public class GroupFragment extends Fragment {
     }
 
     private void recyclerViewImplementation() {
-        groupNameAdapter = new GroupNameAdapter(groupNameList);
+        groupNameAdapter = new GroupNameAdapter(groupNameList, this);
         groupNamesRecyclerView.setAdapter(groupNameAdapter);
         groupNamesRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         groupNamesRecyclerView.addItemDecoration(new VerticalSpaceItemDecoration(32));
@@ -76,6 +78,7 @@ public class GroupFragment extends Fragment {
         });
     }
 
+
     public class VerticalSpaceItemDecoration extends RecyclerView.ItemDecoration {
 
         private final int verticalSpaceHeight;
@@ -90,6 +93,13 @@ public class GroupFragment extends Fragment {
                                    RecyclerView.State state) {
             outRect.bottom = verticalSpaceHeight;
         }
-
     }
+
+    @Override
+    public void onItemClicked(int position) {
+        String groupName=groupNameList.get(position);
+        startActivity(new Intent(getActivity(),GroupChatActivity.class)
+        .putExtra(ConstantKey.ITEM_SELECTED_GROUPS,groupName));
+    }
+
 }

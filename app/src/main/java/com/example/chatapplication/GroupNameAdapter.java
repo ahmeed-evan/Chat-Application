@@ -9,6 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.chatapplication.Interfaces.OnRecyclerViewItemClickListener;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -17,9 +19,11 @@ import butterknife.ButterKnife;
 public class GroupNameAdapter extends RecyclerView.Adapter<GroupNameAdapter.ViewHolder> {
 
     private List<String>groupNameList;
+    private OnRecyclerViewItemClickListener onRecyclerViewItemClickListener;
 
-    public GroupNameAdapter(List<String> groupNameList) {
+    public GroupNameAdapter(List<String> groupNameList, OnRecyclerViewItemClickListener onRecyclerViewItemClickListener) {
         this.groupNameList = groupNameList;
+        this.onRecyclerViewItemClickListener = onRecyclerViewItemClickListener;
     }
 
     @NonNull
@@ -49,6 +53,13 @@ public class GroupNameAdapter extends RecyclerView.Adapter<GroupNameAdapter.View
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onRecyclerViewItemClickListener.onItemClicked(getAdapterPosition());
+                }
+            });
         }
     }
 }

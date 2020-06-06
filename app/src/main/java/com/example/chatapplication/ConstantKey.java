@@ -7,4 +7,5 @@ public class ConstantKey {
     public final static String USER_PHONE_NUMBER = "USER_PHONE_NUMBER";
     public final static String USER_UUID = "USER_UUID";
     public final static String GROUPS = "GROUPS";
+    public final static String ITEM_SELECTED_GROUPS = "ITEM_SELECTED_GROUPS";
 }

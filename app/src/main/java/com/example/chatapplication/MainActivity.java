@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -118,13 +119,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private boolean doubleBackToExitPressedOnce = false;
+        private boolean doubleBackToExitPressedOnce = false;
 
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            return;
+            finish();
+            System.exit(0);
         }
 
         this.doubleBackToExitPressedOnce = true;

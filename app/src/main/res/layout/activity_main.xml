@@ -20,6 +20,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:tabIndicatorColor="@color/colorPrimary"
             app:tabRippleColor="@android:color/transparent"
+            
             app:tabTextAppearance="@style/Rubik_Black_14" />
 
     </androidx.viewpager.widget.ViewPager>

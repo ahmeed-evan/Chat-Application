@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".GroupChatActivity">
+
+    <EditText
+        android:id="@+id/newMessageEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/background_round_4_blue"
+        android:hint="text here"
+        android:maxLines="2"
+        android:padding="16dp"
+        android:textAppearance="@style/Rubik_light_Black_14"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/sendButton" />
+
+    <ImageView
+        android:id="@+id/sendButton"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
