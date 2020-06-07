@@ -9,15 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GroupChatActivity"></activity>
+        <activity android:name=".Activities.GroupChatActivity"></activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name=".LoginFlow.RegisterActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".LoginFlow.LoginActivity"
             android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
-        <activity android:name=".MainActivity" >
+        <activity android:name=".Activities.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,11 +25,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name=".Activities.SettingActivity"
+            android:parentActivityName=".Activities.MainActivity" />
         <activity
-            android:name=".EditProfileActivity"
-            android:parentActivityName=".SettingActivity"
+            android:name=".Activities.EditProfileActivity"
+            android:parentActivityName=".Activities.SettingActivity"
             android:windowSoftInputMode="adjustResize" />
 
         <meta-data

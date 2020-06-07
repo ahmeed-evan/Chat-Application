@@ -1,4 +1,4 @@
-package com.example.chatapplication;
+package com.example.chatapplication.Fragments;
 
 import android.content.Intent;
 import android.graphics.Rect;
@@ -13,7 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.chatapplication.ConstantKey;
+import com.example.chatapplication.Activities.GroupChatActivity;
+import com.example.chatapplication.Adapter.GroupNameAdapter;
 import com.example.chatapplication.Interfaces.OnRecyclerViewItemClickListener;
+import com.example.chatapplication.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -98,7 +102,7 @@ public class GroupFragment extends Fragment  implements OnRecyclerViewItemClickL
     @Override
     public void onItemClicked(int position) {
         String groupName=groupNameList.get(position);
-        startActivity(new Intent(getActivity(),GroupChatActivity.class)
+        startActivity(new Intent(getActivity(), GroupChatActivity.class)
         .putExtra(ConstantKey.ITEM_SELECTED_GROUPS,groupName));
     }
 

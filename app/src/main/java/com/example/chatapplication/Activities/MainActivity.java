@@ -1,10 +1,9 @@
-package com.example.chatapplication;
+package com.example.chatapplication.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +11,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.chatapplication.ConstantKey;
+import com.example.chatapplication.CustomCreateGroupDialog;
+import com.example.chatapplication.CustomLoadingDialog;
+import com.example.chatapplication.Fragments.ChatFragment;
+import com.example.chatapplication.Fragments.ContactFragment;
+import com.example.chatapplication.Fragments.GroupFragment;
+import com.example.chatapplication.LoginFlow.LoginActivity;
+import com.example.chatapplication.R;
+import com.example.chatapplication.Adapter.TabLayoutViewPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -65,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.child(ConstantKey.USER_NAME).exists()) {
-                    startActivity(new Intent(MainActivity.this,EditProfileActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|
+                    startActivity(new Intent(MainActivity.this, EditProfileActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|
                             Intent.FLAG_ACTIVITY_NEW_TASK));
                     customLoadingDialog.stopLoadingDialog();
                 }else {
@@ -107,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.settings:
-                startActivity(new Intent(MainActivity.this,SettingActivity.class));
+                startActivity(new Intent(MainActivity.this, SettingActivity.class));
                 return true;
 
             case R.id.createGroup:

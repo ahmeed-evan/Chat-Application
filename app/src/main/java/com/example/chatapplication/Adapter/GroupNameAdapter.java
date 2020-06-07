@@ -1,4 +1,4 @@
-package com.example.chatapplication;
+package com.example.chatapplication.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chatapplication.Interfaces.OnRecyclerViewItemClickListener;
+import com.example.chatapplication.R;
 
 import java.util.List;
 

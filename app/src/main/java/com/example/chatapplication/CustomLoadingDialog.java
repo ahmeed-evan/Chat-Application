@@ -14,17 +14,17 @@ public class CustomLoadingDialog {
         this.activity = activity;
     }
 
-    void startLoadingDialog(){
-        AlertDialog.Builder builder=new AlertDialog.Builder(activity);
-        LayoutInflater layoutInflater=activity.getLayoutInflater();
-        builder.setView(layoutInflater.inflate(R.layout.custom_loading_dialog,null));
+    public void startLoadingDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        LayoutInflater layoutInflater = activity.getLayoutInflater();
+        builder.setView(layoutInflater.inflate(R.layout.custom_loading_dialog, null));
         builder.setCancelable(false);
-        alertDialog=builder.create();
+        alertDialog = builder.create();
         alertDialog.show();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     }
 
-    void stopLoadingDialog(){
+    public void stopLoadingDialog() {
         alertDialog.dismiss();
     }
 }

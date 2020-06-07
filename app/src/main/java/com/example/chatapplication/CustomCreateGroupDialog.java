@@ -35,7 +35,7 @@ public class CustomCreateGroupDialog {
         this.activity = activity;
     }
 
-    void startCreatingGroupDialog() {
+    public void startCreatingGroupDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         LayoutInflater layoutInflater = activity.getLayoutInflater();
         View view = layoutInflater.inflate(R.layout.custom_create_group_dialog, null);

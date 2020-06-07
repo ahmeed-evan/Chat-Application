@@ -1,4 +1,4 @@
-package com.example.chatapplication;
+package com.example.chatapplication.Activities;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.chatapplication.ConstantKey;
+import com.example.chatapplication.CustomLoadingDialog;
+import com.example.chatapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
